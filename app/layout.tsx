@@ -1,24 +1,27 @@
+import { Space_Mono, Work_Sans } from "next/font/google";
 import "./globals.css";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Savora | Global Spice Kits",
-  description: "Authentic, pre-portioned spice kits for weeknight international dinners.",
-};
+const spaceMono = Space_Mono({ 
+  subsets: ["latin"], 
+  weight: ["400", "700"],
+  variable: '--font-space-mono'
+});
+
+const workSans = Work_Sans({ 
+  subsets: ["latin"],
+  variable: '--font-work-sans'
+});
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="grid-bg min-h-screen">{children}</body>
+      <body className={`${spaceMono.variable} ${workSans.variable} font-sans bg-cream text-black`}>
+        {children}
+      </body>
     </html>
   );
 }

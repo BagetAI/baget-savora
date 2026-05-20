@@ -1,13 +1,6 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').Config} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'replicate.delivery',
-      },
-    ],
-  },
+  reactStrictMode: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
