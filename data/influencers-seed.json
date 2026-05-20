@@ -1,0 +1,14 @@
+/**
+ * SAVORA INFLUENCER TARGETS
+ * 
+ * Target Persona: Time-pressed urban professionals (28-45)
+ * Niche: Global flavor, minimalist cooking, meal prep
+ */
+
+const influencers = [
+  { handle: "@beachykeene", platform: "Instagram", reach: "18k", niche: "Whole30 / Quick Global Meals" },
+  { handle: "@the_prep_guy", platform: "Instagram", reach: "12k", niche: "Clean Meal Prep / Spice Blends" },
+  { handle: "@hungryhappens", platform: "TikTok/IG", reach: "22k", niche: "Authentic Mediterranean/Middle Eastern" },
+  { handle: "@spice_and_sprout", platform: "Instagram", reach: "9k", niche: "Eco-friendly / Plant-based Global" },
+  { handle: "@thecuratedkitchen", platform: "Instagram", reach: "15k", niche: "Minimalist Kitchen / Artisanal D2C" }
+];

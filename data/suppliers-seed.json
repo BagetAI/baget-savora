@@ -1,0 +1,11 @@
+/**
+ * SAVORA SUPPLIER DATABASE
+ */
+
+const suppliers = [
+  { name: "RawSpiceBar", location: "USA", specialty: "Wholesale Blending & White Label", contact_status: "Vetted" },
+  { name: "Alchemy Spice Company", location: "Chattanooga, TN", specialty: "Contract Manufacturing / Co-packing", contact_status: "Outreach Pending" },
+  { name: "The Sachet Factory", location: "UK", specialty: "Compostable Sachet Filling", contact_status: "Vetted" },
+  { name: "Motown Spice", location: "North Carolina, USA", specialty: "Low-MOQ Custom Blending", contact_status: "Research" },
+  { name: "MST Pack", location: "China", specialty: "High-Barrier Wood-Pulp Packaging", contact_status: "Initial Quote Received" }
+];

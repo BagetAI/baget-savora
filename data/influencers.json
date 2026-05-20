@@ -1,0 +1,10 @@
+/**
+ * SAVORA INFLUENCER TARGETS 2026
+ */
+const influencerData = [
+  { "handle": "@beachykeene", "platform": "Instagram", "reach": "18.4k", "niche": "Whole30 / Clean Prep" },
+  { "handle": "@the_prep_guy", "platform": "Instagram", "reach": "12.1k", "niche": "Minimalist High-Protein" },
+  { "handle": "@hungryhappens", "platform": "TikTok", "reach": "22.5k", "niche": "Mediterranean / Fast Flavors" },
+  { "handle": "@spice_and_sprout", "platform": "Instagram", "reach": "8.9k", "niche": "Vegan Eco-friendly" },
+  { "handle": "@thecuratedkitchen", "platform": "Instagram", "reach": "15.2k", "niche": "Aesthetic Cooking / D2C" }
+];

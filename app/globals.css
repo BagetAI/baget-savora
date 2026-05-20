@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 240, 240, 240;
+  --background-start-rgb: 10, 14, 26;
+  --background-end-rgb: 10, 14, 26;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+  font-family: 'Inter', sans-serif;
+}
+
+.mono-heading {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.glow-button {
+  box-shadow: 0 0 20px rgba(178, 93, 57, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 30px rgba(178, 93, 57, 0.4);
+}
+
+.grid-bg {
+  background-image: radial-gradient(#1A2035 1px, transparent 1px);
+  background-size: 40px 40px;
+}

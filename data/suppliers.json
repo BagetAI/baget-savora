@@ -1,0 +1,10 @@
+/**
+ * SAVORA SUPPLIERS 2026
+ */
+const supplierData = [
+  { "name": "RawSpiceBar", "location": "USA", "specialty": "White Label Global Blending", "contact_status": "Vetted" },
+  { "name": "Alchemy Spice Company", "location": "Chattanooga, TN", "specialty": "Small-batch Co-packing", "contact_status": "Outreach" },
+  { "name": "The Sachet Factory", "location": "UK", "specialty": "Compostable Filling Lines", "contact_status": "Vetted" },
+  { "name": "Motown Spice", "location": "North Carolina", "specialty": "Custom Small-batch Blending", "contact_status": "Initial" },
+  { "name": "MST Pack", "location": "China", "specialty": "Sustainable Barrier Materials", "contact_status": "Initial" }
+];
