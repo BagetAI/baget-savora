@@ -1,8 +1,8 @@
 import WaitlistForm from "@/components/WaitlistForm";
 import { ChevronRight, Globe, Leaf, Zap } from "lucide-react";
 
-// Database ID for waitlist signups
-const DB_ID = "63481682-9f68-450f-a388-7253508b5f3d"; 
+// Final Database ID for waitlist signups
+const DB_ID = "db_signups_8822"; 
 
 export default function LandingPage() {
   return (
