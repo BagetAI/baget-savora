@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Savora Recipe Cards | Print Master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,600;9..144,1,300&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terracotta: #C65A3A;
+            --sage: #7E9B86;
+            --saffron: #F4A21D;
+            --linen: #F9F7F2;
+            --slate: #2F3E46;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #eee;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Print Settings */
+        @page {
+            size: 5.5in 8.5in;
+            margin: 0;
+        }
+
+        @media print {
+            body { background: none; }
+            .no-print { display: none; }
+            .card-page {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+        }
+
+        .card-page {
+            width: 5.5in;
+            height: 8.5in;
+            background: var(--linen);
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: var(--slate);
+        }
+
+        /* Side Labels for the Agent/Founder */
+        .page-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 32px;
+            margin: 0;
+            color: var(--terracotta);
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* Hero Image Container */
+        .hero {
+            width: 100%;
+            height: 4.25in; /* Exactly half of the card height */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metadata {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid rgba(47, 62, 70, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Instructions Framework */
+        .steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .step-num {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--saffron);
+            line-height: 1;
+        }
+
+        .step-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Ingredient Lists */
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .ingredient-list {
+            font-size: 13px;
+        }
+
+        .ingredient-list h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            color: var(--sage);
+        }
+
+        .ingredient-list ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .ingredient-list li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        .ingredient-list li::before {
+            content: "•";
+            color: var(--terracotta);
+        }
+
+        .chef-tip {
+            margin-top: auto;
+            background: rgba(126, 155, 134, 0.1);
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-style: italic;
+            border-left: 3px solid var(--sage);
+        }
+
+        .brand-footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(47, 62, 70, 0.1);
+        }
+
+        /* Navigation for preview */
+        .preview-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="no-print preview-nav">
+        <h3 style="margin:0 0 10px 0">Savora Print Master</h3>
+        <p style="font-size:12px; margin-bottom:15px">Size: 5.5" x 8.5" (A5-ish)<br>Stock: 16pt Matte Recycled</p>
+        <button onclick="window.print()" style="background:var(--terracotta); color:white; border:none; padding:10px 20px; cursor:pointer; font-weight:bold">PRINT TO PDF</button>
+    </div>
+
+    <!-- 1. SICHUAN MAPO TOFU -->
+    <div class="card-page">
+        <div class="page-label">MAPO TOFU - FRONT</div>
+        <div class="hero" style="background-image: url('images/editorial-food-photography-of-sichuan-ma.png')"></div>
+        <div class="content">
+            <div class="metadata">
+                <span>TIME: 20 MINS</span>
+                <span>SERVES: 4</span>
+                <span>LEVEL: EASY</span>
+            </div>
+            <h1>Sichuan Mapo Tofu</h1>
+            <p class="subtitle">The classic numbing and spicy comfort bowl.</p>
+            <div class="ingredient-grid">
+                <div class="ingredient-list">
+                    <h4>In Your Savora Kit</h4>
+                    <ul>
+                        <li>Erjingtiao Chili Flakes</li>
+                        <li>Red Sichuan Peppercorns</li>
+                        <li>Douchi (Fermented Beans)</li>
+                        <li>Ginger & Garlic Blend</li>
+                    </ul>
+                </div>
+                <div class="ingredient-list">
+                    <h4>From Your Kitchen</h4>
+                    <ul>
+                        <li>1 lb Ground Pork or Mushrooms</li>
+                        <li>1 block Silken Tofu</li>
+                        <li>2 tbsp Cooking Oil</li>
+                        <li>1 tbsp Soy Sauce</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="brand-footer">SAVORA // GLOBAL FLAVOR, EXACT PORTIONS</div>
+        </div>
+    </div>
+
+    <div class="card-page">
+        <div class="page-label">MAPO TOFU - BACK</div>
+        <div class="content">
+            <h4 style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:var(--sage)">Instructions</h4>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-text"><strong>PREP THE HEAT:</strong> Heat 2 tbsp oil in a wok or large pan. Toast the whole <strong>Savora Peppercorns</strong> for 30s until fragrant. Remove with a slotted spoon if you prefer a smoother texture, or leave them in for the authentic crunch.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-text"><strong>BROWN & SEASON:</strong> Add the ground meat or mushrooms. Cook until browned. Stir in the remaining <strong>Savora Spice Blend</strong> and 1 tbsp soy sauce. Cook for 1 minute until the oil turns a vibrant red.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-text"><strong>SIMMER:</strong> Gently slide in the cubed silken tofu and 1/2 cup water. Simmer for 5 mins, spooning the sauce over the tofu. Finish with a drizzle of sesame oil or scallions. Serve over white rice.</div>
+                </div>
+            </div>
+            <div class="chef-tip">
+                <strong>Chef's Tip:</strong> For extra silkiness, blanch your tofu cubes in lightly salted boiling water for 1 minute before adding them to the pan. This prevents them from breaking during the simmer.
+            </div>
+            <div class="brand-footer">SAVORA // EST. 2026 // SAVORA.CO</div>
+        </div>
+    </div>
+
+    <!-- 2. WEST AFRICAN JOLLOF -->
+    <div class="card-page">
+        <div class="page-label">JOLLOF RICE - FRONT</div>
+        <div class="hero" style="background-image: url('images/editorial-food-photography-of-west-afric.png')"></div>
+        <div class="content">
+            <div class="metadata">
+                <span>TIME: 35 MINS</span>
+                <span>SERVES: 4</span>
+                <span>LEVEL: MEDIUM</span>
+            </div>
+            <h1>West African Jollof</h1>
+            <p class="subtitle">Party-style rice with deep smoke and umami.</p>
+            <div class="ingredient-grid">
+                <div class="ingredient-list">
+                    <h4>In Your Savora Kit</h4>
+                    <ul>
+                        <li>Nigerian-style Curry Powder</li>
+                        <li>High-Umami Bouillon</li>
+                        <li>Dried Thyme & Bay Leaf</li>
+                        <li>Smoked Paprika</li>
+                    </ul>
+                </div>
+                <div class="ingredient-list">
+                    <h4>From Your Kitchen</h4>
+                    <ul>
+                        <li>2 cups Long-grain Rice</li>
+                        <li>1 large Red Onion (diced)</li>
+                        <li>1 tbsp Tomato Paste</li>
+                        <li>3 cups Water or Tomato Puree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="brand-footer">SAVORA // GLOBAL FLAVOR, EXACT PORTIONS</div>
+        </div>
+    </div>
+
+    <div class="card-page">
+        <div class="page-label">JOLLOF RICE - BACK</div>
+        <div class="content">
+            <h4 style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:var(--sage)">Instructions</h4>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-text"><strong>THE BASE:</strong> Sauté the diced onion in 3 tbsp oil until soft. Add the <strong>Savora Spice Blend</strong> and 1 tbsp tomato paste. Fry for 2-3 mins until the paste deepens in color and the spices are fragrant.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-text"><strong>COAT THE GRAINS:</strong> Stir in 2 cups of rinsed long-grain rice. Mix well to ensure every grain is coated in the red oil. This "toasting" step ensures the rice doesn't get mushy.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-text"><strong>THE STEAM:</strong> Add 3 cups of water (or tomato puree). Bring to a boil, then reduce to the lowest heat. Cover tightly with foil and a lid. Simmer for 25 mins. Turn off heat and let it steam for 10 mins. Do not stir!</div>
+                </div>
+            </div>
+            <div class="chef-tip">
+                <strong>Chef's Tip:</strong> The "bottom of the pot" (the burnt bits) is called "socarrat" in some cultures—in West Africa, it's the sign of a perfect Jollof. Don't be afraid of a little char at the base.
+            </div>
+            <div class="brand-footer">SAVORA // EST. 2026 // SAVORA.CO</div>
+        </div>
+    </div>
+
+    <!-- 3. LEVANTINE SUMAC FISH -->
+    <div class="card-page">
+        <div class="page-label">SUMAC FISH - FRONT</div>
+        <div class="hero" style="background-image: url('images/editorial-food-photography-of-levantine-.png')"></div>
+        <div class="content">
+            <div class="metadata">
+                <span>TIME: 15 MINS</span>
+                <span>SERVES: 4</span>
+                <span>LEVEL: EASY</span>
+            </div>
+            <h1>Levantine Sumac Fish</h1>
+            <p class="subtitle">Bright, zesty fish with a nutty sesame crust.</p>
+            <div class="ingredient-grid">
+                <div class="ingredient-list">
+                    <h4>In Your Savora Kit</h4>
+                    <ul>
+                        <li>Pure Ground Sumac</li>
+                        <li>Toasted White Sesame</li>
+                        <li>Wild Thyme & Za'atar Mix</li>
+                        <li>Aleppo Pepper Flakes</li>
+                    </ul>
+                </div>
+                <div class="ingredient-list">
+                    <h4>From Your Kitchen</h4>
+                    <ul>
+                        <li>4 White Fish Fillets (Cod/Bass)</li>
+                        <li>1 Lemon (Juice & Zest)</li>
+                        <li>Olive Oil</li>
+                        <li>Sea Salt</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="brand-footer">SAVORA // GLOBAL FLAVOR, EXACT PORTIONS</div>
+        </div>
+    </div>
+
+    <div class="card-page">
+        <div class="page-label">SUMAC FISH - BACK</div>
+        <div class="content">
+            <h4 style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:var(--sage)">Instructions</h4>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-text"><strong>PREP:</strong> Preheat oven to 400°F (200°C). Pat your fish fillets bone-dry with paper towels. Drizzle with olive oil, lemon juice, and a pinch of salt.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-text"><strong>CRUST:</strong> Press the <strong>Savora Za'atar & Sumac Blend</strong> generously onto the top surface of each fillet. You want a thick, purple-flecked crust that will toast in the oven.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-text"><strong>ROAST:</strong> Bake for 12-15 mins depending on thickness. The fish should flake easily with a fork and the sesame seeds should be golden. Serve with a side of lemony couscous or a fresh salad.</div>
+                </div>
+            </div>
+            <div class="chef-tip">
+                <strong>Chef's Tip:</strong> Sumac loses its bright tartness if cooked too long. If you want an extra punch, sprinkle a tiny pinch of the raw sumac over the fish right before serving.
+            </div>
+            <div class="brand-footer">SAVORA // EST. 2026 // SAVORA.CO</div>
+        </div>
+    </div>
+
+    <!-- 4. SOUTHERN THAI MASSAMAN -->
+    <div class="card-page">
+        <div class="page-label">MASSAMAN - FRONT</div>
+        <div class="hero" style="background-image: url('images/editorial-food-photography-of-southern-t.png')"></div>
+        <div class="content">
+            <div class="metadata">
+                <span>TIME: 30 MINS</span>
+                <span>SERVES: 4</span>
+                <span>LEVEL: MEDIUM</span>
+            </div>
+            <h1>Thai Massaman Curry</h1>
+            <p class="subtitle">Warm, aromatic spices in a rich coconut base.</p>
+            <div class="ingredient-grid">
+                <div class="ingredient-list">
+                    <h4>In Your Savora Kit</h4>
+                    <ul>
+                        <li>Massaman Dry-Spice Base</li>
+                        <li>Bird's Eye Chili Flakes</li>
+                        <li>Whole Star Anise & Cardamom</li>
+                        <li>Coconut Sugar Blend</li>
+                    </ul>
+                </div>
+                <div class="ingredient-list">
+                    <h4>From Your Kitchen</h4>
+                    <ul>
+                        <li>1 lb Chicken or Beef</li>
+                        <li>1 can Coconut Milk</li>
+                        <li>1 large Potato (cubed)</li>
+                        <li>1 Shallot (sliced)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="brand-footer">SAVORA // GLOBAL FLAVOR, EXACT PORTIONS</div>
+        </div>
+    </div>
+
+    <div class="card-page">
+        <div class="page-label">MASSAMAN - BACK</div>
+        <div class="content">
+            <h4 style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:var(--sage)">Instructions</h4>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-text"><strong>INFUSE:</strong> Sauté sliced shallot and meat in oil for 5 mins. Stir in the <strong>Savora Spice Blend</strong>. Cook for 2 mins, allowing the warm spices (cinnamon/star anise) to bloom in the oil.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-text"><strong>SIMMER:</strong> Pour in the coconut milk and add the cubed potato. Bring to a gentle simmer. Cover and cook for 20 mins until the potatoes are fork-tender and the meat is cooked through.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-text"><strong>BALANCE:</strong> Stir in the included coconut sugar to balance the heat. Taste and add a splash of fish sauce or salt if needed. Garnish with peanuts and serve with jasmine rice.</div>
+                </div>
+            </div>
+            <div class="chef-tip">
+                <strong>Chef's Tip:</strong> Massaman is a "Persian-influenced" Thai curry, which is why it uses warm spices like cinnamon. It's even better the next day after the spices have fully melded.
+            </div>
+            <div class="brand-footer">SAVORA // EST. 2026 // SAVORA.CO</div>
+        </div>
+    </div>
+
+    <!-- 5. OAXACAN TACOS -->
+    <div class="card-page">
+        <div class="page-label">OAXACAN TACOS - FRONT</div>
+        <div class="hero" style="background-image: url('images/editorial-food-photography-of-oaxacan-ta.png')"></div>
+        <div class="content">
+            <div class="metadata">
+                <span>TIME: 15 MINS</span>
+                <span>SERVES: 4</span>
+                <span>LEVEL: EASY</span>
+            </div>
+            <h1>Oaxacan Taco Rub</h1>
+            <p class="subtitle">Deep, smoky chile flavor with a hint of cacao.</p>
+            <div class="ingredient-grid">
+                <div class="ingredient-list">
+                    <h4>In Your Savora Kit</h4>
+                    <ul>
+                        <li>Ancho & Guajillo Chile Rub</li>
+                        <li>Mexican Oregano & Cumin</li>
+                        <li>Pure Oaxacan Cacao Powder</li>
+                        <li>Smoked Paprika</li>
+                    </ul>
+                </div>
+                <div class="ingredient-list">
+                    <h4>From Your Kitchen</h4>
+                    <ul>
+                        <li>1 lb Ground Beef or Crumbles</li>
+                        <li>Corn Tortillas</li>
+                        <li>1 Lime</li>
+                        <li>Fresh Cilantro & Onion</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="brand-footer">SAVORA // GLOBAL FLAVOR, EXACT PORTIONS</div>
+        </div>
+    </div>
+
+    <div class="card-page">
+        <div class="page-label">OAXACAN TACOS - BACK</div>
+        <div class="content">
+            <h4 style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:20px; color:var(--sage)">Instructions</h4>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-text"><strong>BROWN:</strong> In a large skillet over medium-high heat, brown the meat or plant-based crumbles until fully cooked. Drain any excess fat if necessary.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-text"><strong>DEEPEN:</strong> Sprinkle the <strong>Savora Oaxacan Rub</strong> over the meat. Add 1/4 cup water and a squeeze of lime. Stir well and simmer for 3 mins until the sauce is glossy and the cacao has melted into the chiles.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-text"><strong>ASSEMBLE:</strong> Serve in warm corn tortillas. Top with finely diced raw white onion, fresh cilantro, and an extra squeeze of lime. Simple, smoky, and authentic.</div>
+                </div>
+            </div>
+            <div class="chef-tip">
+                <strong>Chef's Tip:</strong> The tiny amount of cacao in this rub doesn't make it sweet—it adds the "Mole" complexity and a rich, dark color that defines Oaxacan cooking.
+            </div>
+            <div class="brand-footer">SAVORA // EST. 2026 // SAVORA.CO</div>
+        </div>
+    </div>
+
+</body>
+</html>
