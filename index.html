@@ -14,7 +14,10 @@
                 extend: {
                     colors: {
                         cream: '#FFFCE1',
-                        accent: '#FF006E',
+                        terracotta: '#C65A3A',
+                        saffron: '#F4A21D',
+                        sage: '#7E9B86',
+                        slate: '#2F3E46',
                     },
                     fontFamily: {
                         mono: ['Space Mono', 'monospace'],
@@ -31,28 +34,38 @@
         .brutal-shadow-hover:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 #000000; }
         .brutal-shadow-active:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 #000000; }
         h1, h2, h3, .font-mono { font-family: 'Space Mono', monospace; text-transform: uppercase; }
-        .italic-accent { color: #FF006E; font-style: italic; }
+        .italic-accent { color: #C65A3A; font-style: italic; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
     </style>
 </head>
-<body>
+<body class="bg-cream text-black font-sans">
     <nav class="border-b-4 border-black p-6 flex justify-between items-center bg-white sticky top-0 z-50">
         <div class="text-3xl font-bold font-mono tracking-tighter">SAVORA</div>
-        <div class="hidden md:block font-mono font-bold uppercase tracking-widest">Est. 2026</div>
+        <div class="hidden md:block font-mono font-bold uppercase tracking-widest text-slate opacity-60">Est. 2026</div>
+        <a href="#waitlist" class="bg-terracotta text-white px-6 py-2 brutal-border brutal-shadow brutal-shadow-hover font-mono font-bold uppercase text-sm">Join Waitlist</a>
     </nav>
 
-    <section class="grid md:grid-cols-2 border-b-4 border-black min-h-[80vh]">
-        <div class="p-8 md:p-16 flex flex-col justify-center border-b-4 md:border-b-0 md:border-r-4 border-black">
-            <div class="bg-accent text-white px-4 py-1 font-mono font-bold inline-block w-fit mb-6 brutal-border brutal-shadow">
-                COMING SUMMER 2026
+    <section class="grid md:grid-cols-2 border-b-4 border-black min-h-[85vh]">
+        <div class="p-8 md:p-16 flex flex-col justify-center border-b-4 md:border-b-0 md:border-r-4 border-black bg-cream">
+            <div class="bg-saffron text-black px-4 py-1 font-mono font-bold inline-block w-fit mb-6 brutal-border brutal-shadow">
+                LAUNCHING JUNE 2026
             </div>
             <h1 class="text-5xl md:text-7xl font-bold leading-none mb-6 uppercase">
                 THE SHORTCUT TO <span class="italic-accent">SOMEWHERE ELSE</span>.
             </h1>
-            <p class="text-xl md:text-2xl mb-8 font-medium">
+            <p class="text-xl md:text-2xl mb-8 font-medium text-slate">
                 Stop buying $12 jars of sumac for one teaspoon. We deliver the exact amount of single-origin spices and chef-verified instructions for a world-class Tuesday night.
             </p>
             
-            <div class="max-w-md">
+            <div id="waitlist" class="max-w-md">
                 <form id="waitlist-form" class="flex flex-col gap-4">
                     <input 
                         type="email" 
@@ -65,12 +78,12 @@
                         type="submit"
                         class="bg-black text-white p-6 brutal-border brutal-shadow brutal-shadow-hover brutal-shadow-active font-mono font-bold text-xl uppercase tracking-tighter"
                     >
-                        JOIN THE WAITLIST
+                        GET FIRST KIT FREE
                     </button>
-                    <p id="form-status" class="font-mono text-xs text-accent font-bold mt-2"></p>
+                    <p id="form-status" class="font-mono text-xs text-terracotta font-bold mt-2"></p>
                 </form>
                 <p class="mt-4 font-mono text-xs opacity-60 uppercase tracking-widest">
-                    JOIN 1,248+ HOME COOKS WAITING FOR LAUNCH
+                    JOIN 1,420+ HOME COOKS WAITING FOR THE DROP
                 </p>
             </div>
         </div>
@@ -78,11 +91,11 @@
         <div class="bg-white flex items-center justify-center p-8 relative overflow-hidden">
             <div class="brutal-border brutal-shadow bg-cream w-full h-full min-h-[400px] relative overflow-hidden">
                 <img 
-                    src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop" 
-                    alt="Artisanal spice blends in sachets" 
-                    class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                    src="images/premium-d2c-spice-sachet-for-savora-br.png" 
+                    alt="Artisanal spice sachet" 
+                    class="object-cover w-full h-full hover:scale-105 transition-all duration-700"
                 >
-                <div class="absolute top-4 left-4 bg-white brutal-border brutal-shadow px-4 py-2 font-mono font-bold text-sm">
+                <div class="absolute top-4 left-4 bg-saffron brutal-border brutal-shadow px-4 py-2 font-mono font-bold text-sm">
                     SICHUAN MAPO TOFU KIT
                 </div>
             </div>
@@ -91,81 +104,94 @@
 
     <section class="border-b-4 border-black bg-white">
         <div class="grid grid-cols-1 md:grid-cols-3">
-            <div class="p-12 border-b-4 md:border-b-0 md:border-r-4 border-black">
-                <div class="text-6xl font-mono font-bold mb-4 text-accent">01</div>
+            <div class="p-12 border-b-4 md:border-b-0 md:border-r-4 border-black group hover:bg-cream transition-colors">
+                <div class="text-6xl font-mono font-bold mb-4 text-terracotta">01</div>
                 <h2 class="text-3xl font-bold mb-4 uppercase">OPEN</h2>
-                <p class="text-lg font-medium">Receive a USPS-optimized kit. No bulk packaging, no waste. Just the flavors you need for a single, perfect recipe.</p>
+                <p class="text-lg font-medium text-slate">Receive a USPS-optimized kit. No bulk packaging, no waste. Just the exact portions for one perfect recipe.</p>
+                <div class="mt-8 border-4 border-black brutal-shadow overflow-hidden h-48">
+                    <img src="images/slim-cardboard-mailer-for-savora-spice-k.png" alt="Savora Mailer" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                </div>
             </div>
-            <div class="p-12 border-b-4 md:border-b-0 md:border-r-4 border-black">
-                <div class="text-6xl font-mono font-bold mb-4 text-accent">02</div>
+            <div class="p-12 border-b-4 md:border-b-0 md:border-r-4 border-black group hover:bg-cream transition-colors">
+                <div class="text-6xl font-mono font-bold mb-4 text-terracotta">02</div>
                 <h2 class="text-3xl font-bold mb-4 uppercase">POUR</h2>
-                <p class="text-lg font-medium">Tear the compostable sachet. Our spices are single-origin and fresh-ground, not sitting in a warehouse for years.</p>
+                <p class="text-lg font-medium text-slate">Tear the compostable sachet. Our spices are single-origin and fresh-ground, maintaining the soul of the dish.</p>
+                <div class="mt-8 border-4 border-black brutal-shadow overflow-hidden h-48">
+                    <img src="images/dynamic-close-up-shot-of-a-hand-pouring-.png" alt="Pouring spices" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                </div>
             </div>
-            <div class="p-12">
-                <div class="text-6xl font-mono font-bold mb-4 text-accent">03</div>
+            <div class="p-12 group hover:bg-cream transition-colors">
+                <div class="text-6xl font-mono font-bold mb-4 text-terracotta">03</div>
                 <h2 class="text-3xl font-bold mb-4 uppercase">COOK</h2>
-                <p class="text-lg font-medium">Follow the 20-minute editorial recipe card. High-end international dinner on a weeknight schedule.</p>
+                <p class="text-lg font-medium text-slate">Follow the 20-minute editorial recipe card. High-end international dinner on a weeknight schedule.</p>
+                <div class="mt-8 border-4 border-black brutal-shadow overflow-hidden h-48">
+                    <img src="images/modern-minimalist-recipe-card-for-sichua.png" alt="Recipe card" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-accent p-8 md:p-24 border-b-4 border-black">
-        <div class="bg-cream brutal-border brutal-shadow p-8 md:p-16 max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center leading-none uppercase">EXACT PORTIONS.<br>ZERO CLUTTER.</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <ul class="space-y-4 font-mono font-bold text-lg uppercase">
-                    <li class="flex items-center"><span class="mr-4 text-accent text-2xl font-bold">×</span> NO $15 SPICE JARS</li>
-                    <li class="flex items-center"><span className="mr-4 text-accent text-2xl font-bold">×</span> NO PLASTIC WASTE</li>
-                    <li class="flex items-center"><span className="mr-4 text-accent text-2xl font-bold">×</span> NO "WHAT'S FOR DINNER?"</li>
-                </ul>
-                <ul class="space-y-4 font-mono font-bold text-lg uppercase">
-                    <li class="flex items-center"><span class="mr-4 text-green-600 text-2xl font-bold">✓</span> 20-MINUTE MEALS</li>
-                    <li class="flex items-center"><span class="mr-4 text-green-600 text-2xl font-bold">✓</span> COMPOSTABLE MATERIALS</li>
-                    <li class="flex items-center"><span class="mr-4 text-green-600 text-2xl font-bold">✓</span> SINGLE-ORIGIN TRACEABILITY</li>
-                </ul>
+    <section class="border-b-4 border-black bg-cream p-8 md:p-16">
+        <h2 class="text-4xl md:text-6xl font-bold mb-12 text-center font-mono uppercase">THE LAUNCH 5</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="bg-white brutal-border brutal-shadow p-4 group">
+                <div class="h-40 border-b-4 border-black mb-4 overflow-hidden">
+                    <img src="images/top-down-editorial-flat-lay-of-a-west-af.png" alt="Jollof Kit" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <h3 class="font-bold text-lg leading-tight mb-2 uppercase">WEST AFRICAN JOLLOF</h3>
+                <p class="text-xs font-mono text-terracotta uppercase">Smoke & Heat</p>
+            </div>
+            <div class="bg-white brutal-border brutal-shadow p-4 group">
+                <div class="h-40 border-b-4 border-black mb-4 overflow-hidden">
+                    <img src="images/macro-shot-of-vibrant-ground-saffron-and.png" alt="Mapo Tofu Spices" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <h3 class="font-bold text-lg leading-tight mb-2 uppercase">SICHUAN MAPO TOFU</h3>
+                <p class="text-xs font-mono text-terracotta uppercase">Numbing "Ma La"</p>
+            </div>
+            <div class="bg-white brutal-border brutal-shadow p-4 group">
+                <div class="h-40 border-b-4 border-black mb-4 overflow-hidden">
+                    <img src="images/savora-levantine-sumac-fish-spice-kit-r.png" alt="Sumac Fish" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <h3 class="font-bold text-lg leading-tight mb-2 uppercase">LEVANTINE SUMAC FISH</h3>
+                <p class="text-xs font-mono text-terracotta uppercase">Zesty & Herbal</p>
+            </div>
+            <div class="bg-white brutal-border brutal-shadow p-4 group">
+                <div class="h-40 border-b-4 border-black mb-4 overflow-hidden">
+                    <img src="images/savora-southern-thai-massaman-curry-kit-.png" alt="Massaman Curry" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <h3 class="font-bold text-lg leading-tight mb-2 uppercase">SOUTHERN THAI MASSAMAN</h3>
+                <p class="text-xs font-mono text-terracotta uppercase">Deep & Creamy</p>
+            </div>
+            <div class="bg-white brutal-border brutal-shadow p-4 group">
+                <div class="h-40 border-b-4 border-black mb-4 overflow-hidden">
+                    <img src="images/savora-regional-mexican-oaxacan-taco-kit.png" alt="Oaxacan Tacos" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                </div>
+                <h3 class="font-bold text-lg leading-tight mb-2 uppercase">OAXACAN TACO RUB</h3>
+                <p class="text-xs font-mono text-terracotta uppercase">Earth & Smoke</p>
             </div>
         </div>
     </section>
 
     <footer class="p-12 text-center bg-black text-white">
         <div class="text-4xl font-mono font-bold mb-6 italic tracking-tighter">SAVORA</div>
-        <p class="font-mono text-sm uppercase opacity-70 mb-4 tracking-widest">© 2026 SAVORA FOODS INC. // ALL RIGHTS RESERVED</p>
         <div class="flex justify-center gap-8 font-mono text-sm uppercase">
-            <a href="#" class="hover:text-accent underline underline-offset-4">INSTAGRAM</a>
-            <a href="#" class="hover:text-accent underline underline-offset-4">TIKTOK</a>
-            <a href="#" class="hover:text-accent underline underline-offset-4">CONTACT</a>
+            <a href="#" class="hover:text-terracotta underline underline-offset-4">INSTAGRAM</a>
+            <a href="#" class="hover:text-terracotta underline underline-offset-4">TIKTOK</a>
         </div>
     </footer>
 
     <script>
         const form = document.getElementById('waitlist-form');
-        const status = document.getElementById('form-status');
-        
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            const btn = form.querySelector('button');
-            
-            btn.disabled = true;
-            btn.innerText = 'HOLD ON...';
-            status.innerText = '';
-
-            try {
-                const res = await fetch('https://app.baget.ai/api/public/databases/savora-waitlist-522/rows', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: { email: email, source: 'landing-page' } })
-                });
-
-                if (res.ok) {
-                    form.innerHTML = '<div class="bg-black text-white p-6 brutal-border brutal-shadow font-mono text-xl text-center">YOU\'RE ON THE LIST. SEE YOU IN THE KITCHEN.</div>';
-                } else {
-                    throw new Error();
-                }
-            } catch (err) {
-                btn.disabled = false;
-                btn.innerText = 'JOIN THE WAITLIST';
-                status.innerText = 'SOMETHING WENT WRONG. TRY AGAIN.';
+            const res = await fetch('https://app.baget.ai/api/public/databases/savora-early-access-112/rows', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: { email, source: 'v1-static-landing' } })
+            });
+            if (res.ok) {
+                form.innerHTML = '<div class="bg-white text-black p-8 brutal-border brutal-shadow font-mono text-xl text-center">CHECK YOUR INBOX.</div>';
             }
         });
     </script>
